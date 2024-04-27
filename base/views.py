@@ -186,14 +186,19 @@ class SingupView(APIView):
     def post(self, request, **kwargs):
         email = request.data.get('email')
         password = request.data.get('password')
-        print('sssssssssssssssss')
+        print(email)
+        print(password)
 
         try:
             user = CustomUser.objects.create_user(email=email, password=password, **kwargs,)
         except ValueError as error:
             return Response(str(error), status=status.HTTP_400_BAD_REQUEST)
+
+        print('still going')
         
         refresh = RefreshToken.for_user(user)
+        print(refresh)
+        print(refresh.access_token)
         return Response({
             'access': str(refresh.access_token),
             'refresh': str(refresh)
