@@ -10,7 +10,6 @@ class CustomUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
-        print('about to save the user')
         try:
             user.save()
             print('user has been saved >')
