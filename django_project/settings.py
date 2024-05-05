@@ -141,7 +141,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
-DATABASE_URL = os.getenv('DATABASE_PRIVATE_URL')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
