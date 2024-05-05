@@ -192,6 +192,9 @@ class SingupView(APIView):
             user = CustomUser.objects.create_user(email=email, password=password, **kwargs,)
         except ValueError as error:
             return Response(str(error), status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
         refresh = RefreshToken.for_user(user)
         print(refresh)
         print(refresh.access_token)
