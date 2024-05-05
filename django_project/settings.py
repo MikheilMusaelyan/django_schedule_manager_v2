@@ -16,11 +16,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "hadasdasdassdas"
+# mYq3t6w9z$C&F-H@McQfTjWnZr4u7x!A%D*G-KaNdRgUkXp2s5v8y/B?E+H+MbQe
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [ 'https://drf.up.railway.app', 'http://127.0.0.1:8000/api/index' ]
 
 
 # Application definition
@@ -131,7 +133,7 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
@@ -139,7 +141,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = os.getenv('DATABASE_PRIVATE_URL')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
